@@ -1,3 +1,4 @@
+<?
 //дебаг
 function dd($arr){
     echo '<pre>';
