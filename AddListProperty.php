@@ -9,7 +9,7 @@ $feald->AddField([
 	'TYPE' => 'S',
 	'SORT' => 50,
 	'CODE' => 'TEST3',
-	//'ID' => 'PROPERTY_222',
+	//'ID' => 'PROPERTY_222', //можно указать уже существующее свойство
 	'SETTINGS' => [
 		'SHOW_ADD_FORM' => 'Y',
 		'SHOW_EDIT_FORM' =>'Y',
