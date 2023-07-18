@@ -33,7 +33,7 @@ $feald->AddField([
 		'SHOW_ADD_FORM' => 'Y',
 		'SHOW_EDIT_FORM' =>'Y',
 		'SHOW_FIELD_PREVIEW' => 'Y',
-    'EDIT_READ_ONLY_FIELD' => 'N',
-    'ADD_READ_ONLY_FIELD' => 'N',
+    		'EDIT_READ_ONLY_FIELD' => 'N',
+    		'ADD_READ_ONLY_FIELD' => 'N',
 	],
 ]);
