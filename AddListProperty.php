@@ -8,6 +8,9 @@ $feald->AddField([
 	'NAME' => 'test3',
 	'TYPE' => 'S',
 	/*
+ 	//Создание свойства поля типа DateTime
+  	'TYPE' => 'S',
+   	'USER_TYPE' => 'DateTime',
  	//Создание свойства/поля типа список
 	'TYPE' => 'L',
 	'LIST' => [
