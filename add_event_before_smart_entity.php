@@ -34,14 +34,17 @@ while($enum = $res->fetch()){
 }
 
 //переопределим контейнер, что бы была возможность переопределить любой метод контейнера
+//let's redefine the container so that it would be possible to override any method of the container
 $container = new class extends Service\Container {
     //переопределим фабрику, установив проверку работы нашего кода, только для необходимого бизнес процесса
+	//let's redefine the factory, setting the operation of our code to check only for the necessary business process
     public function getFactory(int $entityTypeId): ?Service\Factory
     {
     	global $entityProjectID;
         if ($entityTypeId == $entityProjectID)
         {
             //получим orm-объект смарт-процесса по его $entityTypeId
+			//get the orm object of the smart process by its $entityTypeId
             $type = $this->getTypeByEntityTypeId($entityTypeId);
             //подменим фабрику
             $factory = new class($type) extends Service\Factory\Dynamic {
@@ -49,8 +52,10 @@ $container = new class extends Service\Container {
                 public function getUpdateOperation($item, $context = null): Operation\Update
                 {
                     //получим операции сущности
+					//replace the factory
                     $operation = parent::getUpdateOperation($item, $context);
                     //добавим дополнительное действие, перед сохранением элемента
+					//add an additional action before saving the element
                     return $operation->addAction(
                         Operation::ACTION_BEFORE_SAVE,
                         new class extends Operation\Action {
@@ -59,7 +64,8 @@ $container = new class extends Service\Container {
                                 $result = new Result();
 
                                 global $arEnum, $rateKap;
-                                 //добавим условия, по которым получим ошибку
+                                //добавим условия, по которым получим ошибку
+								//let's add conditions for which we get an error
                                 if (!$item->get('UF_CRM_3_1693426378854') AND $arEnum[$item->get('UF_CRM_3_1693426294470')]) {
                                 	$result->addError(new Error('Поле Ставка обязательно для заполнения при выбранном значении «Почасовая ставка» в поле «Условия оплаты»'));
                                 }
