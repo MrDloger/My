@@ -32,7 +32,6 @@ while($enum = $res->fetch()){
 	$arEnum[$enum['ID']] = $enum['ID'];
 	if ($enum['VALUE'] === 'Почасовая ставка с кэпом') $rateKap = $enum['ID'];
 }
-
 //переопределим контейнер, что бы была возможность переопределить любой метод контейнера
 //let's redefine the container so that it would be possible to override any method of the container
 $container = new class extends Service\Container {
@@ -83,4 +82,5 @@ $container = new class extends Service\Container {
     }
 };
 //подменяем преопределенный контейнер
+//replace the predefined container
 DI\ServiceLocator::getInstance()->addInstance('crm.service.container', $container);
